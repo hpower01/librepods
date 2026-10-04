@@ -83,6 +83,7 @@ import com.kyant.backdrop.backdrops.rememberLayerBackdrop
 import me.kavishdevar.librepods.BuildConfig
 import me.kavishdevar.librepods.R
 import me.kavishdevar.librepods.presentation.components.AppInfoCard
+import me.kavishdevar.librepods.presentation.components.CopyrightMark
 import me.kavishdevar.librepods.presentation.components.DeviceInfoCard
 import me.kavishdevar.librepods.presentation.components.StyledBottomSheet
 import me.kavishdevar.librepods.presentation.components.StyledButton
@@ -464,13 +465,7 @@ fun AppSettingsScreen(
             )
 
             // סימן זכויות יוצרים
-            Text(
-                text = "©",
-                // Standalone style (not merged with the theme) so both credit lines use the exact same font
-                style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily.Cursive, fontStyle = FontStyle.Italic),
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(top = 4.dp)
-            )
+            CopyrightMark(modifier = Modifier.padding(top = 4.dp))
         }
         // ----------------------
 

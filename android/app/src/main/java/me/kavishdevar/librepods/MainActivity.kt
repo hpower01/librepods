@@ -86,6 +86,7 @@ import com.google.android.play.core.review.ReviewManagerFactory
 import dev.chrisbanes.haze.materials.ExperimentalHazeMaterialsApi
 import me.kavishdevar.librepods.data.AirPodsNotifications
 import me.kavishdevar.librepods.data.ControlCommandRepository
+import me.kavishdevar.librepods.presentation.components.CopyrightMark
 import me.kavishdevar.librepods.presentation.navigation.NavigationRoot
 import me.kavishdevar.librepods.presentation.theme.LibrePodsTheme
 import me.kavishdevar.librepods.presentation.viewmodel.AirPodsViewModel
@@ -338,13 +339,7 @@ fun HPowerWelcomeDialog(onDismiss: () -> Unit) {
                 )
 
                 // סימן זכויות יוצרים
-                Text(
-                    text = "©",
-                    // Standalone style (not merged with the theme) so both credit lines use the exact same font
-                    style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily.Cursive, fontStyle = FontStyle.Italic),
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(top = 4.dp)
-                )
+                CopyrightMark(modifier = Modifier.padding(top = 4.dp))
 
                 Spacer(modifier = Modifier.height(16.dp))
 
