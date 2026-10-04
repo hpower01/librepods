@@ -458,18 +458,16 @@ fun AppSettingsScreen(
         ) {
             Text(
                 text = "Mod By HPower",
-                fontSize = 22.sp,
-                fontFamily = FontFamily.Cursive,
-                fontStyle = FontStyle.Italic,
+                // Standalone style (not merged with the theme) so both credit lines use the exact same font
+                style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily.Cursive, fontStyle = FontStyle.Italic),
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
             // סימן זכויות יוצרים
             Text(
                 text = "©",
-                fontSize = 22.sp,
-                fontFamily = FontFamily.Cursive,
-                fontStyle = FontStyle.Italic,
+                // Standalone style (not merged with the theme) so both credit lines use the exact same font
+                style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily.Cursive, fontStyle = FontStyle.Italic),
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(top = 4.dp)
             )

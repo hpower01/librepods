@@ -64,8 +64,11 @@ android {
                     arguments += "-DCMAKE_BUILD_TYPE=Release"
                 }
             }
-            if (releaseSigningAvailable) {
-                signingConfig = signingConfigs.getByName("release")
+            signingConfig = if (releaseSigningAvailable) {
+                signingConfigs.getByName("release")
+            } else {
+                // No release keystore configured: sign with the debug key so the APK is still installable
+                signingConfigs.getByName("debug")
             }
             defaultConfig {
                 minSdk = 33
