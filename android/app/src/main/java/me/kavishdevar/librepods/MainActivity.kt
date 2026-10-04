@@ -23,6 +23,12 @@ package me.kavishdevar.librepods
 // import me.kavishdevar.librepods.screens.Onboarding
 // import me.kavishdevar.librepods.utils.RadareOffsetFinder
 //import dagger.hilt.android.AndroidEntryPoint
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.compose.ui.graphics.toArgb
+import android.widget.TextView
+import android.view.Gravity
+import android.util.TypedValue
+import android.graphics.Typeface
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.BroadcastReceiver
@@ -71,10 +77,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -331,21 +334,10 @@ fun HPowerWelcomeDialog(onDismiss: () -> Unit) {
                 Spacer(modifier = Modifier.height(24.dp))
 
                 // טקסט קרדיט "Mod By HPower"
-                Text(
-                    text = "Mod By HPower",
-                    // Bundled Dancing Script (includes ©) so both credit lines render in the same cursive font on every device
-                    style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily(Font(R.font.dancing_script)), fontStyle = FontStyle.Italic),
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+                HPowerCreditText(text = "Mod By HPower")
 
                 // סימן זכויות יוצרים
-                Text(
-                    text = "©",
-                    // Bundled Dancing Script (includes ©) so both credit lines render in the same cursive font on every device
-                    style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily(Font(R.font.dancing_script)), fontStyle = FontStyle.Italic),
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(top = 4.dp)
-                )
+                HPowerCreditText(text = "©", modifier = Modifier.padding(top = 4.dp))
 
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -429,4 +421,28 @@ fun HPowerWelcomeDialog(onDismiss: () -> Unit) {
             }
         }
     }
+}
+
+/**
+ * Credit line drawn with a native TextView (fontFamily="cursive", italic, 22sp) - the same
+ * rendering path as the about dialog in Smart Gallery/HTransfer, so the text and the © sign
+ * look exactly the same as there.
+ */
+@Composable
+fun HPowerCreditText(text: String, modifier: Modifier = Modifier) {
+    val color = MaterialTheme.colorScheme.onSurfaceVariant.toArgb()
+    AndroidView(
+        modifier = modifier,
+        factory = { context ->
+            TextView(context).apply {
+                typeface = Typeface.create("cursive", Typeface.ITALIC)
+                setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
+                gravity = Gravity.CENTER
+            }
+        },
+        update = { textView ->
+            textView.text = text
+            textView.setTextColor(color)
+        }
+    )
 }

@@ -18,6 +18,7 @@
 
 package me.kavishdevar.librepods.presentation.screens
 
+import me.kavishdevar.librepods.HPowerCreditText
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -68,7 +69,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
@@ -456,21 +456,10 @@ fun AppSettingsScreen(
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = "Mod By HPower",
-                // Bundled Dancing Script (includes ©) so both credit lines render in the same cursive font on every device
-                style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily(Font(R.font.dancing_script)), fontStyle = FontStyle.Italic),
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+            HPowerCreditText(text = "Mod By HPower")
 
             // סימן זכויות יוצרים
-            Text(
-                text = "©",
-                // Bundled Dancing Script (includes ©) so both credit lines render in the same cursive font on every device
-                style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily(Font(R.font.dancing_script)), fontStyle = FontStyle.Italic),
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(top = 4.dp)
-            )
+            HPowerCreditText(text = "©", modifier = Modifier.padding(top = 4.dp))
         }
         // ----------------------
 
