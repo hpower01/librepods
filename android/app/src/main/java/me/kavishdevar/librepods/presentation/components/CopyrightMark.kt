@@ -23,21 +23,25 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextGeometricTransform
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.sp
+import me.kavishdevar.librepods.R
 
-// סימן זכויות יוצרים מודרני: דק, צר ונטוי (כמו ב-Smart Gallery)
+// גופן כתב-יד מצורף לאפליקציה (Dancing Script), כדי שגם הקרדיט וגם ה-© ייראו זהים בכל מכשיר
+// The system "cursive" font on some devices has no © glyph, so it fell back to a plain one
+val CreditFontFamily = FontFamily(Font(R.font.dancing_script))
+
+// Same as the credit in the HPower apps: cursive, italic, 22sp
+val CreditTextStyle = TextStyle(fontSize = 22.sp, fontFamily = CreditFontFamily, fontStyle = FontStyle.Italic)
+
+// סימן זכויות יוצרים באותו גופן מסולסל של הקרדיט
 @Composable
 fun CopyrightMark(modifier: Modifier = Modifier) {
     Text(
         text = "©",
-        // Thin system sans-serif, condensed and slanted, instead of the fallback cursive glyph
-        style = TextStyle(
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Light,
-            textGeometricTransform = TextGeometricTransform(scaleX = 0.8f, skewX = -0.3f)
-        ),
+        style = CreditTextStyle,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
         modifier = modifier
     )

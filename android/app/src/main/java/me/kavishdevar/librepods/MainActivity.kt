@@ -71,9 +71,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -87,6 +84,7 @@ import dev.chrisbanes.haze.materials.ExperimentalHazeMaterialsApi
 import me.kavishdevar.librepods.data.AirPodsNotifications
 import me.kavishdevar.librepods.data.ControlCommandRepository
 import me.kavishdevar.librepods.presentation.components.CopyrightMark
+import me.kavishdevar.librepods.presentation.components.CreditTextStyle
 import me.kavishdevar.librepods.presentation.navigation.NavigationRoot
 import me.kavishdevar.librepods.presentation.theme.LibrePodsTheme
 import me.kavishdevar.librepods.presentation.viewmodel.AirPodsViewModel
@@ -334,7 +332,7 @@ fun HPowerWelcomeDialog(onDismiss: () -> Unit) {
                 Text(
                     text = "Mod By HPower",
                     // Standalone style (not merged with the theme) so both credit lines use the exact same font
-                    style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily.Cursive, fontStyle = FontStyle.Italic),
+                    style = CreditTextStyle,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
 
