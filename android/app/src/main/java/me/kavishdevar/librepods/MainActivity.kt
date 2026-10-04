@@ -393,7 +393,7 @@ fun HPowerWelcomeDialog(onDismiss: () -> Unit) {
                                 verticalAlignment = Alignment.CenterVertically,
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .clickable { uriHandler.openUri("mailto:kobiamos001@gmail.com") }
+                                    .clickable { uriHandler.openUri("mailto:hpower.cf@gmail.com") }
                                     .padding(vertical = 4.dp)
                             ) {
                                 Icon(
