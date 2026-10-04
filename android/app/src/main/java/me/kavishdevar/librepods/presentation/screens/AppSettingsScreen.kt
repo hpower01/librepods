@@ -68,7 +68,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
@@ -84,6 +83,7 @@ import me.kavishdevar.librepods.BuildConfig
 import me.kavishdevar.librepods.R
 import me.kavishdevar.librepods.presentation.components.AppInfoCard
 import me.kavishdevar.librepods.presentation.components.CopyrightMark
+import me.kavishdevar.librepods.presentation.components.CreditTextStyle
 import me.kavishdevar.librepods.presentation.components.DeviceInfoCard
 import me.kavishdevar.librepods.presentation.components.StyledBottomSheet
 import me.kavishdevar.librepods.presentation.components.StyledButton
@@ -460,7 +460,7 @@ fun AppSettingsScreen(
             Text(
                 text = "Mod By HPower",
                 // Standalone style (not merged with the theme) so both credit lines use the exact same font
-                style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily.Cursive, fontStyle = FontStyle.Italic),
+                style = CreditTextStyle,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
