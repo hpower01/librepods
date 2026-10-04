@@ -72,6 +72,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -332,16 +333,16 @@ fun HPowerWelcomeDialog(onDismiss: () -> Unit) {
                 // טקסט קרדיט "Mod By HPower"
                 Text(
                     text = "Mod By HPower",
-                    // Standalone style (not merged with the theme) so both credit lines use the exact same font
-                    style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily.Cursive, fontStyle = FontStyle.Italic),
+                    // Bundled Dancing Script (includes ©) so both credit lines render in the same cursive font on every device
+                    style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily(Font(R.font.dancing_script)), fontStyle = FontStyle.Italic),
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
 
                 // סימן זכויות יוצרים
                 Text(
                     text = "©",
-                    // Standalone style (not merged with the theme) so both credit lines use the exact same font
-                    style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily.Cursive, fontStyle = FontStyle.Italic),
+                    // Bundled Dancing Script (includes ©) so both credit lines render in the same cursive font on every device
+                    style = TextStyle(fontSize = 22.sp, fontFamily = FontFamily(Font(R.font.dancing_script)), fontStyle = FontStyle.Italic),
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(top = 4.dp)
                 )
