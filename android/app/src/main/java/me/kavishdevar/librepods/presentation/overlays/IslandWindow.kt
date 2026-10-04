@@ -374,12 +374,33 @@ class IslandWindow(private val context: Context) {
         }
 
         val videoView = islandView.findViewById<VideoView>(R.id.island_video_view)
-        val videoUri = "android.resource://me.kavishdevar.librepods/${R.raw.island}".toUri()
-        videoView.setAudioFocusRequest(AudioManager.AUDIOFOCUS_NONE)
-        videoView.setVideoURI(videoUri)
-        videoView.setOnPreparedListener { mediaPlayer ->
-            mediaPlayer.isLooping = true
-            videoView.start()
+        try {
+            val videoUri = "android.resource://me.kavishdevar.librepods/${R.raw.island}".toUri()
+            videoView.setAudioFocusRequest(AudioManager.AUDIOFOCUS_NONE)
+
+            // Catch video errors (e.g. missing codecs) and prevent the app from crashing
+            videoView.setOnErrorListener { _, _, _ ->
+                videoView.visibility = View.GONE
+                true // Returns true to indicate we handled the error and prevent default crash/dialog
+            }
+
+            // Add info listener as extra safety for certain codecs dropping silent warnings
+            videoView.setOnInfoListener { _, _, _ -> true }
+
+            videoView.setVideoURI(videoUri)
+            videoView.setOnPreparedListener { mediaPlayer ->
+                try {
+                    mediaPlayer.isLooping = true
+                    videoView.start()
+                } catch (ex: Exception) {
+                    e("IslandWindow", "Video start failed, skipping: ${ex.message}")
+                    videoView.visibility = View.GONE
+                }
+            }
+        } catch (ex: Exception) {
+            // Fallback if setting up the video fails immediately
+            e("IslandWindow", "Video setup failed, skipping: ${ex.message}")
+            videoView.visibility = View.GONE
         }
 
         try {

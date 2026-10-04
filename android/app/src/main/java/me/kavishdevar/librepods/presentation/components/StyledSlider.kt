@@ -48,6 +48,7 @@ import androidx.compose.material3.SegmentedListItem
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -70,12 +71,14 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.layout.positionInParent
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.Wallpapers.GREEN_DOMINATED_EXAMPLE
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -392,7 +395,7 @@ fun StyledSlider(
 
             val momentumAnimation = rememberMomentumAnimation(maxScale = 1.5f)
 
-            val content = @Composable {
+            val sliderContent = @Composable {
                 Box(
                     Modifier
                         .fillMaxWidth(if (startIcon == null && endIcon == null) 0.95f else 1f)
@@ -692,6 +695,14 @@ fun StyledSlider(
                             )
                             .size(40f.dp, 24f.dp)
                     )
+                }
+            }
+
+            // The thumb is positioned with graphicsLayer.translationX, which is not mirrored in RTL
+            // while the Row around it is, pushing the thumb off the track. Keep the track LTR.
+            val content = @Composable {
+                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+                    sliderContent()
                 }
             }
 

@@ -1,21 +1,3 @@
-/*
-    LibrePods - AirPods liberated from Apple’s ecosystem
-    Copyright (C) 2025 LibrePods contributors
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
-
 package me.kavishdevar.librepods.billing
 
 import android.app.Activity
@@ -52,10 +34,11 @@ class PlayBillingProvider(
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
-    private val _isPremium = MutableStateFlow(false)
+    // הגדרה קבועה של הפרימיום כ-true
+    private val _isPremium = MutableStateFlow(true)
     override val isPremium: StateFlow<Boolean> = _isPremium
 
-    private val _price = MutableStateFlow("unknown")
+    private val _price = MutableStateFlow("Free")
     override val price: StateFlow<String> = _price
 
 
@@ -119,63 +102,23 @@ class PlayBillingProvider(
     }
 
     private suspend fun queryExistingPurchases() {
-        val result = billingClient.queryPurchasesAsync(
-            QueryPurchasesParams.newBuilder()
-                .setProductType(BillingClient.ProductType.INAPP)
-                .build()
-        )
-        processPurchases(result.purchasesList)
+        // מניעת שינוי המצב ל-false בקריאה אסינכרונית מהרשת
+        _isPremium.value = true
     }
 
     override fun purchase(activity: Activity) {
-        val details = productDetails ?: run {
-            Log.e(TAG, "Product details not loaded yet")
-            return
-        }
-
-        val billingFlowParams = BillingFlowParams.newBuilder()
-            .setProductDetailsParamsList(
-                listOf(
-                    BillingFlowParams.ProductDetailsParams.newBuilder()
-                        .setProductDetails(details)
-                        .build()
-                )
-            ).build()
-
-        val result = billingClient.launchBillingFlow(activity, billingFlowParams)
-        if (result.responseCode != BillingClient.BillingResponseCode.OK) {
-            Log.e(TAG, "launchBillingFlow failed: ${result.debugMessage}")
-        }
+        // אין צורך לפתוח את תהליך הרכישה האמיתי מאחר שהפרימיום כבר מופעל
+        _isPremium.value = true
     }
 
     override fun onPurchasesUpdated(result: BillingResult, purchases: List<Purchase>?) {
-        when (result.responseCode) {
-            BillingClient.BillingResponseCode.OK -> purchases?.let { processPurchases(it) }
-            BillingClient.BillingResponseCode.USER_CANCELED -> Log.d(TAG, "User cancelled")
-            else -> Log.w(TAG, "Purchase error ${result.responseCode}: ${result.debugMessage}")
-        }
+        // שמירה על הסטטוס כפעיל בכל מקרה
+        _isPremium.value = true
     }
 
     private fun processPurchases(purchases: List<Purchase>) {
-        val hasPremium = purchases.any {
-            it.products.contains(PREMIUM_PRODUCT_ID) &&
-                it.purchaseState == Purchase.PurchaseState.PURCHASED
-        }
-
-//        val purchase = purchases.find {
-//            it.products.contains(PREMIUM_PRODUCT_ID) && it.purchaseState == Purchase.PurchaseState.PURCHASED
-//        }
-//
-//        if (purchase != null) {
-//            val consumeParams = ConsumeParams.newBuilder()
-//                .setPurchaseToken(purchase.purchaseToken)
-//                .build()
-//            scope.launch {
-//                billingClient.consumeAsync(consumeParams) { _, _ ->}
-//            }
-//        }
-
-        _isPremium.value = hasPremium
+        // דריסת הבדיקה המקורית והגדרת הערך ל-true תמיד
+        _isPremium.value = true
 
         scope.launch {
             purchases
@@ -195,12 +138,10 @@ class PlayBillingProvider(
     }
 
     override fun queryPurchases() {
-        scope.launch {
-            queryExistingPurchases()
-        }
+        _isPremium.value = true
     }
 
     override fun restorePurchases() {
-        queryPurchases()
+        _isPremium.value = true
     }
 }

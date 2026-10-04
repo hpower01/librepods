@@ -1,6 +1,6 @@
 import java.util.Properties
 
-val appVersionName = "1.0.0-rc2"
+val appVersionName = "2.1"
 
 plugins {
     alias(libs.plugins.android.application)
@@ -49,7 +49,7 @@ android {
     defaultConfig {
         applicationId = "me.kavishdevar.librepods"
         targetSdk = 37
-        versionCode = 63
+        versionCode = 2
         versionName = appVersionName
     }
     buildTypes {
@@ -142,6 +142,7 @@ dependencies {
     implementation(libs.androidx.dynamicanimation)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.material.icons.core)
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
     implementation(libs.billing)
     debugImplementation(libs.androidx.compose.ui.tooling)
     implementation(libs.androidx.compose.foundation.layout)

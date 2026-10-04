@@ -63,12 +63,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -373,6 +375,8 @@ fun NoiseControlSettings(
                                 .zIndex(0f)
                                 .draggable(
                                     orientation = Orientation.Horizontal,
+                                    // offset{} is mirrored in RTL, so the drag delta must be too
+                                    reverseDirection = LocalLayoutDirection.current == LayoutDirection.Rtl,
                                     state = rememberDraggableState { delta ->
                                         dragOffset = (dragOffset + delta).coerceIn(
                                             0f,

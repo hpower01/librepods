@@ -18,6 +18,9 @@
 
 package me.kavishdevar.librepods.presentation.screens
 
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -248,6 +251,8 @@ fun EqualizerCard(
     val height = 200.dp
     val maxOffset = with(LocalDensity.current) { height.toPx() } / 2
 
+    // The curve is drawn on a Canvas from left to right (Low -> High), so keep the knobs LTR too
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -541,7 +546,7 @@ fun EqualizerCard(
                             modifier = Modifier.weight(1f)
                         ) {
                             Text(
-                                text = "Low".uppercase(),
+                                text = stringResource(R.string.eq_low).uppercase(),
                                 style = TextStyle(
                                     fontSize = 14.sp,
                                     fontFamily = FontFamily(Font(R.font.sf_pro)),
@@ -558,7 +563,7 @@ fun EqualizerCard(
                             modifier = Modifier.weight(1f)
                         ) {
                             Text(
-                                text = "Mid".uppercase(),
+                                text = stringResource(R.string.eq_mid).uppercase(),
                                 style = TextStyle(
                                     fontSize = 14.sp,
                                     fontFamily = FontFamily(Font(R.font.sf_pro)),
@@ -575,7 +580,7 @@ fun EqualizerCard(
                             modifier = Modifier.weight(1f)
                         ) {
                             Text(
-                                text = "High".uppercase(),
+                                text = stringResource(R.string.eq_high).uppercase(),
                                 style = TextStyle(
                                     fontSize = 14.sp,
                                     fontFamily = FontFamily(Font(R.font.sf_pro)),
@@ -719,6 +724,7 @@ fun EqualizerCard(
                 }
             }
         }
+    }
     }
 }
 

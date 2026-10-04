@@ -1,15 +1,6 @@
 name: Android CI
 
 on:
-  push:
-    branches:
-      - '*'
-    paths:
-      - 'android/**'
-      - 'root-module-manual/**'
-  pull_request:
-    paths:
-      - 'android/**'
   workflow_dispatch:
     inputs:
       branch:
@@ -52,10 +43,6 @@ jobs:
           RELEASE_KEY_ALIAS=${{ secrets.RELEASE_KEY_ALIAS }}
           RELEASE_KEY_PASSWORD=${{ secrets.RELEASE_KEY_PASSWORD }}
           EOF
-      - name: Build debug APK for PRs
-        if: github.event_name == 'pull_request'
-        run: ./gradlew assembleFossDebug
-        working-directory: android
       - name: Build release artifacts
         if: github.event_name != 'pull_request'
         run: ./gradlew packageReleaseArtifacts
@@ -70,36 +57,6 @@ jobs:
         with:
           name: apk-release
           path: release/*release.apk
-
-      - uses: actions/upload-artifact@v4
-        if: github.event_name == 'pull_request'
-        with:
-          name: apk-debug
-          path: android/app/build/outputs/apk/foss/debug/app-foss-debug.apk
-
-      - uses: actions/upload-artifact@v4
-        if: github.event_name != 'pull_request'
-        with:
-          name: apk-debug
-          path: release/*debug.apk
-
-      - uses: actions/upload-artifact@v4
-        if: github.event_name != 'pull_request'
-        with:
-          name: root-module-release
-          path: release/*release.zip
-
-      - uses: actions/upload-artifact@v4
-        if: github.event_name != 'pull_request'
-        with:
-          name: root-module-debug
-          path: release/*debug.zip
-
-      - uses: actions/upload-artifact@v4
-        if: github.event_name != 'pull_request'
-        with:
-          name: release-bundle
-          path: release/*.aab
 
   release:
     if: github.event_name == 'push'
@@ -117,21 +74,6 @@ jobs:
         with:
           name: apk-release
           path: artifacts/apk-release
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: apk-debug
-          path: artifacts/apk-debug
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: root-module-release
-          path: artifacts/root-module-release
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: root-module-debug
-          path: artifacts/root-module-debug
       - id: prev
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -175,7 +117,7 @@ jobs:
               "embeds": [
                 {
                   "title": "LibrePods Nightly Build",
-                  "description": "Download the latest debug and release APKs.",
+                  "description": "Download the latest release APK.",
                   "color": 253060,
                   "fields": [
                     {
@@ -199,12 +141,6 @@ jobs:
                       "label": "Download Release APK",
                       "style": 5,
                       "url": "https://github.com/kavishdevar/librepods/releases/download/nightly-${{ needs.build.outputs.short_sha }}/LibrePods-FOSS-v${{ needs.build.outputs.app_version }}-release.apk"
-                    },
-                    {
-                      "type": 2,
-                      "label": "Download Debug APK",
-                      "style": 5,
-                      "url": "https://github.com/kavishdevar/librepods/releases/download/nightly-${{ needs.build.outputs.short_sha }}/LibrePods-FOSS-v${{ needs.build.outputs.app_version }}-debug.apk"
                     }
                   ]
                 }

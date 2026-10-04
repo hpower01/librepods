@@ -1,0 +1,465 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!-- General & App Info -->
+    <string name="app_description">שחרר את ה-AirPods שלך מהאקוסיסטם של אפל.</string>
+    <string name="about">אודות</string>
+    <string name="contact">צור קשר</string>
+    <string name="email">דואר אלקטרוני</string>
+    <string name="discord">דיסקורד</string>
+    <string name="github_issues">דיווח תקלות ב-GitHub</string>
+    <string name="version">גרסה</string>
+    <string name="version_code">קוד גרסה</string>
+    <string name="build_type">סוג בנייה</string>
+    <string name="model_name">שם הדגם</string>
+    <string name="model_number">מספר הדגם</string>
+    <string name="serial_number">מספר סידורי</string>
+    <string name="device_info">פרטי מכשיר</string>
+    <string name="build_id">מזהה בנייה</string>
+    <string name="manufacturer">יצרן</string>
+    <string name="subject">נושא</string>
+    <string name="describe_your_issue">תאר את הבעיה שלך</string>
+    <string name="open_source_licenses">רישיונות קוד פתוח</string>
+
+    <!-- General UI & Common Buttons -->
+    <string name="back">חזור</string>
+    <string name="undo">בטל</string>
+    <string name="reset">אפס</string>
+    <string name="test">בדיקה</string>
+    <string name="name">שם</string>
+    <string name="yes">כן</string>
+    <string name="no">לא</string>
+    <string name="on">מופעל</string>
+    <string name="off">כבוי</string>
+    <string name="settings">הגדרות</string>
+    <string name="proceed">המשך</string>
+    <string name="close_button">סגור</string>
+    <string name="enable_button">הפעל</string>
+    <string name="cancel_button">ביטול</string>
+    <string name="action_reconnect">התחבר מחדש</string>
+    <string name="disconnect">נתק</string>
+    <string name="default_option">ברירת מחדל</string>
+    <string name="slower">לאט יותר</string>
+    <string name="slowest">הכי לאט</string>
+    <string name="longer">ארוך יותר</string>
+    <string name="longest">הכי ארוך</string>
+    <string name="darker">כהה יותר</string>
+    <string name="brighter">בהיר יותר</string>
+    <string name="less">פחות</string>
+    <string name="more">יותר</string>
+
+    <!-- Permissions & Setup -->
+    <string name="permissions_required">ההרשאות הבאות נדרשות כדי להשתמש באפליקציה. אנא אשר אותן כדי להמשיך.</string>
+    <string name="permission_required_title">נדרשת הרשאה</string>
+    <string name="bluetooth_permissions_title">הרשאות בלוטות\'</string>
+    <string name="bluetooth_permissions_desc">נדרש כדי לתקשר עם ה-AirPods שלך</string>
+    <string name="notification_permission_title">הרשאת התראות</string>
+    <string name="notification_permission_desc">כדי להציג את מצב הסוללה</string>
+    <string name="phone_permissions_title">הרשאות טלפון</string>
+    <string name="phone_permissions_desc">כדי לענות לשיחות בעזרת מחוות ראש</string>
+    <string name="display_over_other_apps_title">הצגה על פני אפליקציות אחרות</string>
+    <string name="display_over_other_apps_desc">עבור חלונות קופצים כשה-AirPods מתחברות</string>
+    <string name="ask_regular_permissions">בקש הרשאות רגילות</string>
+    <string name="overlay_permission_granted">הרשאת הצגה על פני אפליקציות ניתנה</string>
+    <string name="grant_overlay_permission">הענק הרשאת הצגה על פני אפליקציות</string>
+    <string name="continue_without_overlay">המשך ללא הרשאת הצגה על פני אפליקציות</string>
+    <string name="root_access_required">נדרשת גישת Root</string>
+    <string name="this_app_needs_root_access_to_hook_onto_the_bluetooth_library">אפליקציה זו זקוקה לגישת Root כדי להתחבר לספריית הבלוטות\' של המערכת</string>
+    <string name="root_access_denied">גישת Root נדחתה. אנא הענק הרשאות Root.</string>
+
+    <!-- AirPods Status & Info -->
+    <string name="buds">אוזניות</string>
+    <string name="case_alt">מארז</string>
+    <string name="left">שמאל</string>
+    <string name="right">ימין</string>
+    <string name="battery">סוללה</string>
+    <string name="battery_description">צפה במצב סוללה מדויק באפליקציה ובהתראה.</string>
+    <string name="battery_format_left">שמאל: %1$s %2$d%%</string>
+    <string name="battery_format_right">ימין: %1$s %2$d%%</string>
+    <string name="battery_format_case">מארז: %1$s %2$d%%</string>
+    <string name="default_device_name">AirPods</string>
+    <string name="default_device_name_pro">AirPods Pro</string>
+    <string name="percentage_format">%1$d%%</string>
+    <string name="airpods_not_connected">ה-AirPods לא מחוברות</string>
+    <string name="airpods_not_connected_description">אנא חבר את ה-AirPods שלך כדי לגשת להגדרות.</string>
+    <string name="other_device_fallback">מכשיר אחר</string>
+
+    <!-- Listening Modes & Audio Controls -->
+    <string name="audio">שמע</string>
+    <string name="noise_control">מצב האזנה</string>
+    <string name="noise_control_description">עבור בין מצבי האזנה ישירות מהאפליקציה או מההגדרות המהירות.</string>
+    <string name="transparency">שקיפות</string>
+    <string name="adaptive">מסתגל</string>
+    <string name="noise_cancellation">ביטול רעשים</string>
+    <string name="noise_cancellation_single_airpod">ביטול רעשים באוזנייה אחת</string>
+    <string name="noise_cancellation_single_airpod_description">אפשר להעביר את ה-AirPods למצב ביטול רעשים גם כשאתה מרכיב רק אוזנייה אחת.</string>
+    <string name="off_listening_mode">מצב האזנה כבוי</string>
+    <string name="off_listening_mode_description">כאשר אפשרות זו מופעלת, מצבי ההאזנה של ה-AirPods יכללו גם אפשרות "כבוי". צלילים חזקים לא מופחתים כאשר מצב ההאזנה מוגדר ככבוי.</string>
+    <string name="listening_mode_off_description">מכבה את ניהול הרעשים</string>
+    <string name="listening_mode_transparency_description">מכניס צלילים מבחוץ</string>
+    <string name="listening_mode_adaptive_description">מכוונן את רעשי הרקע באופן דינמי</string>
+    <string name="listening_mode_noise_cancellation_description">חוסם צלילים מבחוץ</string>
+    <string name="adaptive_audio">שמע מסתגל</string>
+    <string name="customize_adaptive_audio">התאם אישית שמע מסתגל</string>
+    <string name="adaptive_audio_description">שמע מסתגל מגיב באופן דינמי לסביבה שלך ומבטל או מאפשר רעש חיצוני. באפשרותך להתאים אישית את השמע המסתגל כדי לאפשר יותר או פחות רעש.</string>
+
+    <!-- Volume & Conversational Awareness -->
+    <string name="volume_control">בקרת עוצמת שמע</string>
+    <string name="volume_control_description">כוונן את עוצמת השמע על ידי החלקה למעלה או למטה על החיישן שממוקם בגבעול של ה-AirPods Pro.</string>
+    <string name="personalized_volume">עוצמת שמע מותאמת אישית</string>
+    <string name="personalized_volume_description">מכוונן את עוצמת השמע של המדיה כתגובה לסביבה שלך.</string>
+    <string name="conversational_awareness">מודעות לשיחה</string>
+    <string name="conversational_awareness_description">מנמיך את עוצמת השמע של המדיה ומפחית רעשי רקע כשאתה מתחיל לדבר עם אנשים אחרים.</string>
+    <string name="conversational_awareness_volume">עוצמת שמע במודעות לשיחה</string>
+    <string name="relative_conversational_awareness_volume">עוצמת שמע יחסית</string>
+    <string name="relative_conversational_awareness_volume_description">מפחית לאחוז מעוצמת השמע הנוכחית במקום מעוצמת השמע המרבית.</string>
+    <string name="conversational_awareness_pause_music">השהה מוזיקה</string>
+    <string name="conversational_awareness_pause_music_description">כשתתחיל לדבר, המוזיקה תושהה.</string>
+
+    <!-- Controls & Gestures -->
+    <string name="press_and_hold_airpods">לחיצה ממושכת על ה-AirPods</string>
+    <string name="press_and_hold_noise_control_description">לחץ ממושכות על הגבעול כדי לעבור בין מצבי ההאזנה שנבחרו.</string>
+    <string name="press_once">לחיצה אחת</string>
+    <string name="press_twice">לחיצה כפולה</string>
+    <string name="press_speed">מהירות לחיצה</string>
+    <string name="press_speed_description">התאם את המהירות הנדרשת ללחיצה כפולה או משולשת על ה-AirPods.</string>
+    <string name="press_and_hold_duration">משך לחיצה ממושכת</string>
+    <string name="press_and_hold_duration_description">התאם את הזמן הנדרש עבור לחיצה ממושכת על ה-AirPods.</string>
+    <string name="volume_swipe_speed">מהירות החלקת עוצמת שמע</string>
+    <string name="volume_swipe_speed_description">כדי למנוע שינויים לא רצויים בעוצמת השמע, בחר את זמן ההמתנה המועדף בין החלקות.</string>
+    <string name="head_gestures">מחוות ראש</string>
+    <string name="head_gestures_details">הנהן כדי לענות לשיחות, ונער את ראשך כדי לדחות.</string>
+    <string name="head_tracking">מעקב ראש</string>
+    <string name="shake_your_head_or_nod">נער את ראשך או הנהן!</string>
+
+    <!-- Call Controls & Microphone -->
+    <string name="call_controls">בקרות שיחה</string>
+    <string name="answer_call">ענה לשיחה</string>
+    <string name="mute_unmute">השתק / בטל השתקה</string>
+    <string name="hang_up">נתק</string>
+    <string name="microphone">מיקרופון</string>
+    <string name="microphone_mode">מצב מיקרופון</string>
+    <string name="microphone_automatic">אוטומטי</string>
+    <string name="microphone_always_right">תמיד ימין</string>
+    <string name="microphone_always_left">תמיד שמאל</string>
+
+    <!-- Accessibility, Transparency & Hearing Aid -->
+    <string name="accessibility">נגישות</string>
+    <string name="adjustments">התאמות</string>
+    <string name="tone_volume">עוצמת צליל התראה</string>
+    <string name="tone_volume_description">התאם את עוצמת צלילי ההתראה שמושמעים מה-AirPods.</string>
+    <string name="transparency_mode">מצב שקיפות</string>
+    <string name="customize_transparency_mode">התאם אישית מצב שקיפות</string>
+    <string name="customize_transparency_mode_description">תוכל להתאים אישית את מצב השקיפות ב-AirPods Pro שלך כדי לעזור לך לשמוע את מה שקורה סביבך.</string>
+    <string name="loud_sound_reduction">הפחתת צלילים חזקים</string>
+    <string name="loud_sound_reduction_description">הפחתת צלילים חזקים מפחיתה באופן פעיל את החשיפה שלך לרעשי סביבה חזקים במצב שקיפות ומצב מסתגל. התכונה אינה פעילה כאשר מצב ההאזנה כבוי.</string>
+    <string name="swipe_to_control_amplification">החלק כדי לשלוט בהגברה</string>
+    <string name="swipe_amplification_description">במצב שקיפות וכאשר לא מתנגנת מדיה, החלק למעלה או למטה על בקרות המגע של ה-AirPods Pro כדי להגביר או להנמיך את צלילי הסביבה.</string>
+    <string name="amplification">הגברה</string>
+    <string name="balance">איזון</string>
+    <string name="tone">טון</string>
+    <string name="ambient_noise_reduction">הפחתת רעשי רקע</string>
+    <string name="conversation_boost">הגברת שיחה</string>
+    <string name="conversation_boost_description">הגברת שיחה ממקדת את ה-AirPods Pro באדם שמדבר מולך, ומקלה על השמיעה בשיחה פנים אל פנים.</string>
+    <string name="hearing_aid">מכשיר שמיעה</string>
+    <string name="hearing_aid_description">ה-AirPods יכולות להשתמש בתוצאות בדיקת שמיעה כדי לבצע התאמות המשפרות את בהירות הקולות והצלילים סביבך.\n\nמכשיר השמיעה מיועד רק לאנשים עם תחושה של אובדן שמיעה קל עד בינוני.</string>
+    <string name="enable_hearing_aid_dialog_title">הפעל מכשיר שמיעה</string>
+    <string name="enable_hearing_aid_dialog_message">הפעלת מכשיר השמיעה תשבית את התאמת האוזניות ואת התאמת מצב השקיפות האישית.</string>
+    <string name="hearing_test">עדכן בדיקת שמיעה</string>
+    <string name="update_hearing_test">עדכן תוצאות בדיקת שמיעה</string>
+    <string name="hearing_test_value_instruction">אנא הזן את ערכי ירידת השמיעה ב-dbHL</string>
+    <string name="hearing_health">בריאות השמיעה</string>
+    <string name="hearing_protection">הגנת שמיעה</string>
+    <string name="workspace_use">שימוש בסביבת עבודה</string>
+    <string name="workspace_use_description">הגנת EN 352 מגבילה את העוצמה המרבית של המדיה ל-82 dBA, ועומדת בדרישות תקן EN 352 להגנה אישית על השמיעה.</string>
+    <string name="ppe">הגנת EN 352</string>
+    <string name="environmental_noise">רעש סביבתי</string>
+    <string name="media_assist">סיוע במדיה</string>
+    <string name="media_assist_description">AirPods Pro יכולות להשתמש בתוצאות בדיקת שמיעה כדי לבצע התאמות המשפרות את חדות הצליל במוזיקה, בווידאו ובשיחות.</string>
+    <string name="adjust_media">התאם מוזיקה ווידאו</string>
+    <string name="adjust_calls">התאם שיחות</string>
+    <string name="equalizer">אקולייזר</string>
+    <string name="apply_eq_to">החל אקולייזר על</string>
+    <string name="phone">טלפון</string>
+    <string name="media">מדיה</string>
+    <string name="band_label">תדר %d</string>
+
+    <!-- Smart Features & Auto-Connect -->
+    <string name="ear_detection">זיהוי אוזן אוטומטי</string>
+    <string name="ear_detection_description">עוצר את הפעלת השמע אוטומטית כשאתה מסיר אותן, וממשיך את ההפעלה כשאתה מחזיר אותן לאוזן.</string>
+    <string name="auto_play">הפעלה אוטומטית</string>
+    <string name="auto_pause">השהיה אוטומטית</string>
+    <string name="sleep_detection">השהה מדיה בעת הירדמות</string>
+    <string name="optimized_charging">מגבלת טעינה ממוטבת</string>
+    <string name="optimized_charging_description">ה-AirPods יכולות ללמוד משגרת השימוש היומית שלך ולהחליט מתי להיטען עד לגבול אופטימלי ומתי לאפשר טעינה מלאה. מגבלה זו שומרת על תוחלת החיים של הסוללה לאורך זמן.\nהגדרה זו עשויה שלא להשפיע על דגמי AirPods שאינם נתמכים, או על דגמים עם קושחה מיושנת.</string>
+    <string name="disconnect_when_not_wearing">נתק את ה-AirPods כשלא בשימוש</string>
+    <string name="disconnect_when_not_wearing_description">עדיין תוכל לשלוט בהן דרך האפליקציה - זה רק מנתק את השמע.</string>
+    <string name="reconnect_to_last_device">התחבר למכשיר האחרון שהיה מחובר</string>
+    <string name="automatically_connect">התחבר למכשיר זה אוטומטית</string>
+    <string name="automatically_connect_description">כאשר מופעל, ה-AirPods ינסו להתחבר למכשיר זה אוטומטית. אחרת, הן ינסו להתחבר רק אם זה המכשיר האחרון שהיה מחובר אליהן.</string>
+    <string name="automatic_connection">חיבור אוטומטי</string>
+    <string name="automatic_connection_description">הפעל והתאם אישית חיבור אוטומטי ל-AirPods.</string>
+
+    <!-- Auto-Connect Takeover Rules -->
+    <string name="takeover_header">העדפות חיבור אוטומטי</string>
+    <string name="takeover_airpods_state">התחבר ל-AirPods שלך כשהסטטוס שלהן הוא:</string>
+    <string name="takeover_disconnected">מנותק</string>
+    <string name="takeover_disconnected_desc">ה-AirPods לא מחוברות לאף מכשיר</string>
+    <string name="takeover_idle">המתנה</string>
+    <string name="takeover_idle_desc">מכשיר מחובר ל-AirPods, אך אינו מנגן מדיה או נמצא בשיחה</string>
+    <string name="takeover_music">מנגן מדיה</string>
+    <string name="takeover_music_desc">מכשיר מנגן מדיה ב-AirPods שלך</string>
+    <string name="takeover_call">בשיחה</string>
+    <string name="takeover_call_desc">מכשיר נמצא בשיחה דרך ה-AirPods שלך</string>
+    <string name="takeover_phone_state">התחבר ל-AirPods כשהטלפון שלך במצב:</string>
+    <string name="takeover_ringing_call">קבלת שיחה</string>
+    <string name="takeover_ringing_call_desc">הטלפון שלך מתחיל לצלצל</string>
+    <string name="takeover_media_start">התחלת ניגון מדיה</string>
+    <string name="takeover_media_start_desc">הטלפון שלך מתחיל לנגן מדיה</string>
+
+    <!-- Camera & Assistant -->
+    <string name="digital_assistant">עוזרת קולית</string>
+    <string name="digital_assistant_on_long_press">עוזרת קולית בלחיצה ממושכת</string>
+    <string name="digital_assistant_on_long_press_description">הפעל את העוזרת הקולית בעת לחיצה ממושכת על גבעול ה-AirPods Pro.</string>
+    <string name="camera_remote">שלט רחוק למצלמה</string>
+    <string name="camera_control">בקרת מצלמה</string>
+    <string name="camera_control_description">צלם תמונה, התחל או הפסק הקלטה ועוד, באמצעות לחיצה אחת או לחיצה ממושכת. כאשר אתה משתמש ב-AirPods לפעולות מצלמה ובחרת ב\'לחיצה אחת\', מחוות שליטת המדיה לא יהיו זמינות, ואם תבחר ב\'לחיצה ממושכת\', מחוות השליטה במצב האזנה ועוזרת קולית לא יהיו זמינות.</string>
+    <string name="camera_control_app_description">הגדר חבילת אפליקציה מותאמת אישית לזיהוי המצלמה</string>
+    <string name="set_custom_camera_package">הגדר מזהה אפליקציית מצלמה מותאם אישית</string>
+    <string name="enter_custom_camera_package">הזן את מזהה האפליקציה של אפליקציית המצלמה:</string>
+    <string name="custom_camera_package">מזהה אפליקציית מצלמה</string>
+    <string name="custom_camera_package_set_success">מזהה אפליקציית המצלמה הוגדר בהצלחה</string>
+    <string name="app_listener_service_label">מאזין מצלמה</string>
+    <string name="app_listener_service_description">שירות האזנה עבור LibrePods לזיהוי מתי המצלמה פעילה כדי להפעיל את השליטה במצלמה דרך ה-AirPods.</string>
+
+    <!-- Widgets, Popups & Quick Settings -->
+    <string name="widget">ווידג\'ט</string>
+    <string name="app_widget_description">ראה את מצב סוללת ה-AirPods שלך ישירות במסך הבית!</string>
+    <string name="appwidget_text">דוגמה</string>
+    <string name="add_widget">הוסף ווידג\'ט</string>
+    <string name="noise_control_widget_description">שלוט במצב האזנה ישירות ממסך הבית שלך.</string>
+    <string name="show_phone_battery_in_widget">הצג את סוללת הטלפון בווידג\'ט</string>
+    <string name="show_phone_battery_in_widget_description">הצג את רמת הסוללה של הטלפון בווידג\'ט לצד סוללת ה-AirPods</string>
+    <string name="popup_animations">הנפשות קופצות</string>
+    <string name="show_bottom_sheet_popup">חלון קופץ בתחתית</string>
+    <string name="show_bottom_sheet_popup_description">הצג חלון קופץ בסגנון iOS בתחתית המסך כאשר ה-AirPods מתחברות.</string>
+    <string name="show_island_popup">חלון אי דינמי</string>
+    <string name="show_island_popup_description">הצג חלון קופץ בסגנון אי דינמי בחלק העליון לאירועי חיבור והשתלטות.</string>
+    <string name="island_connected_text">מחובר</string>
+    <string name="island_connected_remote_text">מחובר ל-Linux</string>
+    <string name="island_taking_over_text">מחובר</string>
+    <string name="island_moved_to_remote_text">עבר ל-Linux</string>
+    <string name="island_moved_to_other_device_text">עבר אל %1$s</string>
+    <string name="island_moved_to_other_device_reversed_text">התחבר מחדש מההתראה</string>
+    <string name="quick_settings_tile">מתג הגדרות מהירות</string>
+    <string name="qs_click_behavior_title">פעולת מתג הגדרות מהירות</string>
+    <string name="qs_click_behavior_dialog_desc">הצג חלון בחירת מצב האזנה בלחיצה.</string>
+    <string name="qs_click_behavior_cycle_desc">עבור בין מצבים בלחיצה.</string>
+    <string name="open_dialog_for_controlling">פתח חלון שליטה</string>
+    <string name="open_dialog_for_controlling_description">אם מושבת, לחיצה על ההגדרות המהירות תעבור בין מצבים. אם מופעל, יוצג חלון לשליטה במצב האזנה ובמודעות לשיחה.</string>
+    <string name="qs_disconnected">מנותק</string>
+    <string name="qs_mode_off">כבוי</string>
+    <string name="qs_mode_transparency">שקיפות</string>
+    <string name="qs_mode_adaptive">מסתגל</string>
+    <string name="qs_mode_anc">ביטול רעשים</string>
+    <string name="qs_mode_unknown">לא ידוע</string>
+
+    <!-- Advanced & Developer Options -->
+    <string name="general_settings_header">כללי</string>
+    <string name="developer_options_header">מפתחים</string>
+    <string name="advanced_options">אפשרויות מתקדמות</string>
+    <string name="advanced_device_settings">הגדרות מכשיר מתקדמות</string>
+    <string name="advanced_device_settings_description">התאם אישית הגדרות כמו עוצמת שמע מותאמת אישית, שמע מסתגל, השהיית מדיה בעת הירדמות, והגדרות נגישות אחרות.</string>
+    <string name="more_settings_title">פתח הגדרות AirPods</string>
+    <string name="more_settings_subtitle">נהל את תכונות והעדפות ה-AirPods</string>
+    <string name="customizations">התאמות אישיות</string>
+    <string name="customizations_description">קבל גישה להתאמות אישיות של האפליקציה, כולל סוללת הטלפון בווידג\'ט, עוצמת שמע במודעות לשיחה, ועוד תכונות התאמה אישית בקרוב.</string>
+    <string name="customizations_unavailable">התאמות אישיות אינן זמינות. חבר את ה-AirPods שלך לפחות פעם אחת כדי לגשת.</string>
+    <string name="act_as_an_apple_device">תפקד כמכשיר אפל</string>
+    <string name="act_as_an_apple_device_description">מאפשר קישוריות למספר מכשירים במקביל ותכונות נגישות כמו התאמה אישית של מצב שקיפות (הגברה, טון, הפחתת רעשי רקע, הגברת שיחה ואקולייזר)</string>
+    <string name="act_as_an_apple_device_warning">עלול להיות לא יציב!! ניתן לחבר לכל היותר שני מכשירים ל-AirPods שלך. אם אתה משתמש בהן עם מכשיר אפל כמו iPad או Mac, אנא חבר קודם את המכשיר הזה ולאחר מכן את האנדרואיד שלך.</string>
+    <string name="set_identity_resolving_key">הגדר מפתח זיהוי IRK</string>
+    <string name="set_identity_resolving_key_description">הגדר ידנית את ערך ה-IRK המשמש לפענוח כתובות BLE אקראיות</string>
+    <string name="set_encryption_key">הגדר מפתח הצפנה</string>
+    <string name="set_encryption_key_description">הגדר ידנית את ערך ה-ENC_KEY המשמש לפענוח שידורי BLE</string>
+    <string name="irk_hex_value">ערך IRK הקסדצימלי</string>
+    <string name="enc_key_hex_value">ערך ENC_KEY הקסדצימלי</string>
+    <string name="enter_irk_hex">הזן מפתח IRK של 16 בתים כמחרוזת הקסדצימלית (32 תווים):</string>
+    <string name="enter_enc_key_hex">הזן מפתח ENC_KEY של 16 בתים כמחרוזת הקסדצימלית (32 תווים):</string>
+    <string name="must_be_32_hex_chars">חייב להיות בדיוק 32 תווים הקסדצימליים</string>
+    <string name="error_converting_hex">שגיאה בהמרת הקסדצימלי:</string>
+    <string name="irk_set_success">מפתח IRK הוגדר בהצלחה</string>
+    <string name="encryption_key_set_success">מפתח ההצפנה הוגדר בהצלחה</string>
+    <string name="use_alternate_head_tracking_packets">השתמש במנות נתונים חלופיות למעקב ראש</string>
+    <string name="use_alternate_head_tracking_packets_description">הפעל אפשרות זו אם מעקב ראש לא עובד אצלך. פעולה זו שולחת נתונים שונים ל-AirPods לבקשת/הפסקת נתוני מעקב ראש.</string>
+    <string name="reset_hook_offset">אפס היסט התחברות</string>
+    <string name="reset_hook_offset_description">פעולה זו תנקה את היסט ההתחברות הנוכחי ותדרוש ממך לעבור שוב את תהליך ההגדרה. האם אתה בטוח שברצונך להמשיך?</string>
+    <string name="hook_offset_reset_success">היסט ההתחברות אופס. מעביר להגדרות...</string>
+    <string name="hook_offset_reset_failure">נכשל איפוס היסט התחברות</string>
+
+    <!-- Background Services & Notifications -->
+    <string name="channel_bg_service_name">מצב שירות רקע</string>
+    <string name="channel_conn_status_name">מצב חיבור AirPods</string>
+    <string name="channel_socket_error_name">בעיות בחיבור (Socket) ל-AirPods</string>
+    <string name="channel_socket_error_desc">התראות על בעיות בהתחברות לפרוטוקול ה-AirPods</string>
+    <string name="notif_bg_service_title">שירות רקע פועל</string>
+    <string name="notif_bg_service_desc">התראה מיותרת, בטל אותה בלחיצה עליה.</string>
+    <string name="notif_socket_error_title">בעיית חיבור ל-AirPods</string>
+    <string name="notif_socket_error_text">לא ניתן להתחבר ל-AirPods דרך L2CAP</string>
+    <string name="notif_socket_error_bigtext">ה-AirPods שלך מחוברות באמצעות בלוטות\', אך LibrePods לא הצליחה להתחבר אליהן באמצעות L2CAP. שגיאה: %1$s</string>
+    <string name="notif_socket_created_not_connected">החיבור (Socket) נוצר, אך לא מחובר. בדוק את יומני המערכת (Logs)</string>
+
+    <!-- Troubleshooting, Logs & Errors -->
+    <string name="troubleshooting">פתרון תקלות</string>
+    <string name="troubleshooting_description">אסוף יומני מערכת לאבחון בעיות בחיבור ה-AirPods</string>
+    <string name="troubleshooting_steps">שלבי פתרון תקלות</string>
+    <string name="collect_logs">אסוף יומני מערכת</string>
+    <string name="saved_logs">יומנים שמורים</string>
+    <string name="no_logs_found">לא נמצאו יומנים שמורים</string>
+    <string name="found_offset_restart_bluetooth">אנא הפעל מחדש את תהליך הבלוטות\'</string>
+    <string name="att_manager_is_null_try_reconnecting">מנהל ה-ATT ריק, נסה להתחבר מחדש.</string>
+    <string name="toast_call_answered">השיחה נענתה באמצעות מחווֹת ראש</string>
+    <string name="toast_call_answer_failed">נכשל מענה לשיחה: %1$s</string>
+    <string name="toast_call_rejected">השיחה נדחתה באמצעות מחווֹת ראש</string>
+    <string name="toast_call_reject_failed">נכשל דחיית שיחה: %1$s</string>
+    <string name="toast_socket_create_failed">יצירת חיבור (Socket) בלוטות\' נכשלה: %1$s</string>
+    <string name="toast_socket_connect_failed">לא ניתן להתחבר: %1$s</string>
+    <string name="toast_socket_connect_timeout">לא ניתן להתחבר: פסק זמן ממושך (Timeout)</string>
+    <string name="toast_socket_establish_failed">ביסוס החיבור נכשל: %1$s</string>
+    <string name="error_socket_constructors">שגיאה ביצירת חיבור בלוטות\' לאחר שניסינו %1$d חתימות בנאי (constructors)</string>
+
+    <!-- Premium, Support & Compatibility -->
+    <string name="free_features">תכונות חינמיות</string>
+    <string name="advanced_features">תכונות מתקדמות</string>
+    <string name="unlock_advanced_features">פתח תכונות מתקדמות</string>
+    <string name="buy_price">קנה ב-%s</string>
+    <string name="restore_purchases">שחזר רכישות</string>
+    <string name="name_your_own_price">(שלם כפי רצונך)</string>
+    <string name="support_the_development">תמוך בפיתוח</string>
+    <string name="support_development_description">LibrePods מפותחת על ידי מפתח יחיד. שדרוג עוזר לשמור על האפליקציה בחיים.</string>
+    <string name="play_foss_premium_banner">בשל שגיאה במערכת החיוב, גישת הפרימיום תפוג בעוד %1$d ימים. אם כבר שדרגת את האפליקציה, אנא לחץ על הודעה זו כדי לשלוח אימייל ל-billing@kavish.xyz לשחזור או אימות הגישה. אנו מתנצלים על אי הנוחות.</string>
+    <string name="feature_availability_disclaimer">זמינות התכונות תלויה בדגם ה-AirPods שלך ובגרסת הקושחה.</string>
+    <string name="requires_xposed">דורש Xposed</string>
+    <string name="bypass_compatibility_check">עקוף בדיקת תאימות</string>
+    <string name="bypass_compatiblity_check_confirmation">האם אתה בטוח שהמכשיר שלך נתמך באופן מקורי או שמופעל אצלך מודול Xposed?</string>
+    <string name="not_supported">לא נתמך</string>
+    <string name="check_the_repository_for_more_info">
+        מכשירים רבים אינם נתמכים עקב מגבלות במחסנית הבלוטות\' של אנדרואיד.
+        \nבמכשירים אלה, נדרשת גישת Root עם מסגרת Xposed לפונקציונליות מלאה.
+        \n\nמגבלה זו טופלה בגרסאות אנדרואיד חדשות יותר. תצורות המכשירים הבאות יכולות להפעיל את האפליקציה באופן מקורי (ללא Root):
+        \n• מכשירי Google Pixel® המריצים את עדכון אנדרואיד 16 ממרץ ואילך, יחד עם עדכון המערכת האחרון של Play
+        \n• מכשירי Google Pixel® המריצים אנדרואיד 17 בטא 3 ומעלה
+        \n• מכשירי OnePlus המריצים מערכת OxygenOS 16 ומעלה
+        \n• מכשירי Oppo המריצים ColorOS 16 ומעלה
+        \n\nלפרטים נוספים, עיין בתיעוד הפרויקט.
+    </string>
+    <string name="compatibility_play_dialog_confirmation">
+        מכשיר זה עשוי שלא להיתמך עקב מגבלות פלטפורמה ודורש מסגרת Xposed. סמן את תיבת הסימון למטה והקלד אישור כדי להמשיך.
+    </string>
+    <string name="type_ok_to_continue">הקלד "%s" כדי להמשיך</string>
+    <string name="read_compatibility_requirements">קראתי את דרישות התאימות.</string>
+    <string name="xposed_available">Xposed זמין</string>
+    <string name="app_enabled_in_xposed">האפליקציה מופעלת ב-Xposed</string>
+    <string name="enable_app_in_xposed_or_update_device">עדכן את המכשיר שלך או הפעל את LibrePods ב-Xposed ופתח מחדש את האפליקציה כדי להמשיך.</string>
+
+    <!-- LibrePods 2 -->
+    <string name="appearance">מראה</string>
+    <string name="compatibility_check_bypassed">בדיקת התאימות עוקפה. האם אתה בטוח שהמכשיר שלך תואם?</string>
+    <string name="custom">מותאם אישית</string>
+    <string name="i_agree">אני מסכים</string>
+    <string name="material3e">Material 3 Expressive</string>
+    <string name="permissions">הרשאות</string>
+    <string name="privacy_policy">מדיניות פרטיות</string>
+    <string name="recommended">מומלץ</string>
+    <string name="reconnecting">מתחבר מחדש</string>
+    <string name="tap_to_reconnect">הקש כדי להתחבר מחדש</string>
+    <string name="update_equalizer_description">זמין רק בקושחת הבטא העדכנית של ה-AirPods. נדרש מכשיר אפל עם מערכת הפעלה בגרסה 27 כדי להתקין את קושחת הבטא.</string>
+    <string name="update_m3e_description">LibrePods תומכת כעת במראה חדש לגמרי המבוסס על Material 3 Expressive, כולל טיפוגרפיה מעודכנת וערכות צבעים מסתגלות.\nניתן לחזור למראה של אפל מהגדרות האפליקציה.</string>
+    <string name="use_material3e">השתמש ב-Material 3 Expressive</string>
+    <string name="what_s_new">מה חדש</string>
+    <string name="log_saved_successfully">היומן נשמר בהצלחה</string>
+    <string name="failed_to_save_log">שמירת היומן נכשלה: %1$s</string>
+    <string name="troubleshoot_step_xposed">ראשית, נוודא שמודול ה-Xposed מוגדר כראוי. הקש על הכפתור למטה כדי לבדוק את הגדרות ה-Scope של Xposed.</string>
+    <string name="troubleshoot_step_put_in_case">אנא הכנס את ה-AirPods למארז וסגור אותו, כדי שיתנתקו לחלוטין.</string>
+    <string name="troubleshoot_step_preparing">מתכונן לאיסוף יומנים… אנא המתן.</string>
+    <string name="troubleshoot_step_connect">כעת, פתח את מארז ה-AirPods וחבר את ה-AirPods שלך. היומנים נאספים. החיבור יזוהה אוטומטית, או שתוכל לעצור את האיסוף ידנית כשתסיים.</string>
+    <string name="troubleshoot_step_complete">איסוף היומנים הושלם! כעת ניתן לשמור או לשתף את היומנים.</string>
+    <string name="total_logs">סה״כ יומנים: %1$d</string>
+    <string name="delete_all">מחק הכל</string>
+    <string name="delete">מחק</string>
+    <string name="open_xposed_settings">פתח הגדרות Xposed</string>
+    <string name="log_saved_name">היומן נשמר: %1$s</string>
+    <string name="error_collecting_logs">שגיאה באיסוף יומנים: %1$s</string>
+    <string name="continue_button">המשך</string>
+    <string name="preparing">מתכונן…</string>
+    <string name="collecting_logs">אוסף יומנים…</string>
+    <string name="log_collection_stopped">איסוף היומנים נעצר</string>
+    <string name="stop_collection">עצור איסוף</string>
+    <string name="share_log_file">שתף קובץ יומן</string>
+    <string name="share">שתף</string>
+    <string name="save">שמור</string>
+    <string name="done">סיום</string>
+    <string name="delete_log_file">מחק קובץ יומן</string>
+    <string name="delete_log_file_confirm">האם אתה בטוח שברצונך למחוק את קובץ היומן הזה? לא ניתן לבטל פעולה זו.</string>
+    <string name="log_file_deleted">קובץ היומן נמחק</string>
+    <string name="failed_to_delete_log_file">מחיקת קובץ היומן נכשלה</string>
+    <string name="delete_all_logs">מחק את כל היומנים</string>
+    <string name="delete_all_logs_confirm">האם אתה בטוח שברצונך למחוק את כל קבצי היומן? לא ניתן לבטל פעולה זו, והיא תמחק %1$d קבצי יומן.</string>
+    <string name="deleted_log_files">נמחקו %1$d קבצי יומן</string>
+    <string name="failed_to_delete_log_files">מחיקת קבצי היומן נכשלה</string>
+    <string name="error_loading_log_content">שגיאה בטעינת תוכן היומן: %1$s</string>
+    <string name="log_content">תוכן היומן</string>
+    <string name="required_permissions">הרשאות נדרשות</string>
+    <string name="perm_bluetooth">בלוטות\'</string>
+    <string name="perm_bluetooth_desc">נדרש כדי לתקשר עם ה-AirPods</string>
+    <string name="optional_permissions">הרשאות אופציונליות</string>
+    <string name="perm_notifications">התראות</string>
+    <string name="perm_notifications_desc">הצגת מצב הסוללה</string>
+    <string name="perm_phone">טלפון</string>
+    <string name="perm_phone_desc">מענה לשיחות טלפון בעזרת מחוות ראש</string>
+    <string name="perm_overlay">הצגה מעל אפליקציות אחרות</string>
+    <string name="perm_overlay_desc">הצגת חלונות קופצים כשה-AirPods בקרבת מקום או כשהשמע עובר אליהן.</string>
+    <string name="grant_all">אשר הכל</string>
+    <string name="welcome_to">ברוכים הבאים אל</string>
+    <string name="pp_last_updated">עודכן לאחרונה: 20 ביוני 2026</string>
+    <string name="pp_overview">סקירה כללית</string>
+    <string name="pp_overview_1">LibrePods אינה אוספת, שומרת, מוכרת או משתפת מידע אישי לצורכי פרסום, ניתוח נתונים, מעקב או בניית פרופילים. האפליקציה אינה כוללת כלי ניתוח, דיווח קריסות, טלמטריה, ערכות פרסום (SDK) או שירותי מעקב.</string>
+    <string name="pp_overview_2">כל המידע נשאר במכשיר שלך, אלא אם תבחר במפורש ליצור איתי קשר, לפתוח דיווח תקלה ב-GitHub מתוך האפליקציה, או לבצע רכישה או חסות דרך פלטפורמת צד שלישי.</string>
+    <string name="pp_third_party">שירותי צד שלישי</string>
+    <string name="pp_third_party_desc">LibrePods מספקת מספר דרכים ליצירת קשר איתי, כולל דואר אלקטרוני, דיסקורד ודיווח תקלות ב-GitHub.</string>
+    <string name="pp_email">דואר אלקטרוני</string>
+    <string name="pp_email_1">אם תיצור איתי קשר בדואר אלקטרוני, אקבל את כתובת הדואר האלקטרוני שלך וכל מידע שתבחר לכלול בהודעה. בעת שימוש בטופס יצירת הקשר ב-LibrePods, אפליקציית הדואר שלך תיפתח עם כתובת נמען, נושא ותוכן שמילאת מראש. גוף ההודעה יכלול גם מידע על גרסת LibrePods ועל המכשיר, כדי לסייע בפתרון תקלות.</string>
+    <string name="pp_email_2">ניתן לערוך או להסיר כל מידע זה לפני שליחת ההודעה.</string>
+    <string name="pp_discord">דיסקורד</string>
+    <string name="pp_discord_1">האפליקציה מספקת קישור לשרת הדיסקורד של LibrePods. אם תבחר להצטרף לשרת, תהיה כפוף למדיניות הפרטיות של דיסקורד.</string>
+    <string name="pp_discord_2">איני מקבל מדיסקורד מידע עליך מלבד מה שגלוי לכולם בשרת, כגון שם המשתמש, תאריך ההצטרפות, שרתים משותפים וכל הודעה או תוכן שתפרסם בשרת, אלא אם תבחר לשתף איתי מידע בשרת.</string>
+    <string name="pp_github_issues">דיווח תקלות ב-GitHub</string>
+    <string name="pp_github_1">בעת פתיחת דיווח תקלה ב-GitHub דרך LibrePods, האפליקציה תמלא מראש את טופס הדיווח עם:</string>
+    <string name="pp_github_item_version">• שם הגרסה וקוד הגרסה של LibrePods</string>
+    <string name="pp_github_item_device">• יצרן ודגם המכשיר</string>
+    <string name="pp_github_item_build">• פרטי גרסת האנדרואיד</string>
+    <string name="pp_github_item_source">• מקור ההתקנה (Google Play או GitHub)</string>
+    <string name="pp_github_2">מידע זה מסייע באבחון תקלות ובמתן תמיכה. שום מידע אינו נשלח אוטומטית. המידע נשלח רק אם תבחר לפתוח את דיווח התקלה ב-GitHub.</string>
+    <string name="pp_payments">תשלומים</string>
+    <string name="pp_google_play">Google Play</string>
+    <string name="pp_play_1">בעת שימוש בגרסה הזמינה ב-Google Play, הרכישות מעובדות על ידי Google Play.</string>
+    <string name="pp_play_2">LibrePods מאמתת את הרכישה מול Google Play במכשיר עצמו, ולא מול שרת מרוחק שבשליטתי. איני מקבל מ-Google Play מידע עליך או על הרכישה שלך. עיבוד התשלום מתבצע במלואו על ידי Google Play, ואין לי גישה לפרטי התשלום שלך.</string>
+    <string name="pp_github_sponsors">GitHub Sponsors</string>
+    <string name="pp_sponsors_1">בעת שימוש בגרסת ה-FOSS הזמינה ב-GitHub, כפתור השדרוג מקשר ל-GitHub Sponsors. אם תבחר לתמוך ב-LibrePods, התמיכה שלך מעובדת על ידי GitHub.</string>
+    <string name="pp_sponsors_2">שם המשתמש והמדינה/אזור שלך משותפים איתי כאשר אתה תומך ב-LibrePods. בהתאם להגדרות הפרטיות שלך ב-GitHub Sponsors, ייתכן שאקבל גם את כתובת הדואר האלקטרוני שלך.</string>
+    <string name="pp_contact">יצירת קשר</string>
+    <string name="pp_contact_desc">אם יש לך שאלות לגבי מדיניות פרטיות זו, ניתן ליצור איתי קשר בדואר אלקטרוני בכתובת privacy@kavish.xyz.</string>
+    <string name="noise_cancel_short">ביטול רעשים</string>
+    <string name="conversational_awareness_two_lines">מודעות\nלשיחה</string>
+    <string name="loading">טוען…</string>
+    <string name="velocity">מהירות</string>
+    <string name="yes_gesture_detected">זוהתה מחוות \"כן\".</string>
+    <string name="no_gesture_detected">זוהתה מחוות \"לא\".</string>
+    <string name="test_head_gestures">בדוק מחוות ראש</string>
+    <string name="horizontal">אופקי</string>
+    <string name="vertical">אנכי</string>
+    <string name="eq_low">נמוך</string>
+    <string name="eq_mid">אמצע</string>
+    <string name="eq_high">גבוה</string>
+    <string name="play_pause">הפעל/השהה</string>
+    <string name="app_disconnected_toast">האפליקציה התנתקה. נתק גם מהגדרות האנדרואיד.</string>
+</resources>
