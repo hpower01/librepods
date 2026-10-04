@@ -115,7 +115,7 @@ fun NavigationRoot(
                     ) {
                         Icon(
                             imageVector = if (state.headTrackingActive) MaterialIcons.pause else Icons.Default.PlayArrow,
-                            contentDescription = "Play/Pause",
+                            contentDescription = stringResource(R.string.play_pause),
                             modifier = Modifier.size(IconButtonDefaults.mediumIconSize)
                         )
                     }

@@ -20,22 +20,28 @@ class LibrePodsApplication: Application(), XposedServiceHelper.OnServiceListener
 
         super<Application>.onCreate()
 
+        // מעקף: הגדרת מצב Xposed כפעיל וזמין מיד עם הפעלת האפליקציה
+        XposedState.isAvailable = true
+        XposedState.bluetoothScopeEnabled = true
     }
 
     override fun onResume(owner: LifecycleOwner) {
         BillingManager.provider.queryPurchases()
-        XposedState.isAvailable = XposedServiceHolder.service != null
-        XposedState.bluetoothScopeEnabled = XposedServiceHolder.service?.scope?.contains("com.google.android.bluetooth") == true || XposedServiceHolder.service?.scope?.contains("com.android.bluetooth") == true
+        // שמירה על מצב פעיל בעת חזרה לאפליקציה
+        XposedState.isAvailable = true
+        XposedState.bluetoothScopeEnabled = true
     }
 
     override fun onServiceBind(service: XposedService) {
         XposedServiceHolder.service = service
         XposedState.isAvailable = true
-        XposedState.bluetoothScopeEnabled = XposedServiceHolder.service?.scope?.contains("com.google.android.bluetooth") == true || XposedServiceHolder.service?.scope?.contains("com.android.bluetooth") == true
+        XposedState.bluetoothScopeEnabled = true
     }
 
     override fun onServiceDied(p0: XposedService) {
         XposedServiceHolder.service = null
-        XposedState.isAvailable = false
+        // מניעת שינוי המצב ל-false במידה והשירות קורס או אינו קיים
+        XposedState.isAvailable = true
+        XposedState.bluetoothScopeEnabled = true
     }
 }

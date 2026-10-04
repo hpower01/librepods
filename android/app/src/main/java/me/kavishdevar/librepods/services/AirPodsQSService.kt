@@ -205,7 +205,7 @@ class AirPodsQSService : TileService() {
         val tile = qsTile ?: return
         Log.d("AirPodsQSService", "updateTile - Connected: $isAirPodsConnected, Mode: $currentAncMode")
 
-        val deviceName = sharedPreferences.getString("name", "AirPods") ?: "AirPods"
+        val deviceName = sharedPreferences.getString("name", getString(R.string.default_device_name)) ?: getString(R.string.default_device_name)
 
         if (isAirPodsConnected) {
             tile.state = Tile.STATE_ACTIVE
@@ -214,8 +214,8 @@ class AirPodsQSService : TileService() {
             tile.icon = Icon.createWithResource(this, getModeIcon(currentAncMode))
         } else {
             tile.state = Tile.STATE_UNAVAILABLE
-            tile.label = "AirPods"
-            tile.subtitle = "Disconnected"
+            tile.label = getString(R.string.default_device_name)
+            tile.subtitle = getString(R.string.qs_disconnected)
             tile.icon = Icon.createWithResource(this, R.drawable.airpods)
         }
 
@@ -254,11 +254,11 @@ class AirPodsQSService : TileService() {
 
     private fun getModeLabel(mode: Int): String {
         return when (mode) {
-            NoiseControlMode.OFF.ordinal + 1 -> "Off"
-            NoiseControlMode.TRANSPARENCY.ordinal + 1 -> "Transparency"
-            NoiseControlMode.ADAPTIVE.ordinal + 1 -> "Adaptive"
-            NoiseControlMode.NOISE_CANCELLATION.ordinal + 1 -> "Noise Cancellation"
-            else -> "Unknown"
+            NoiseControlMode.OFF.ordinal + 1 -> getString(R.string.qs_mode_off)
+            NoiseControlMode.TRANSPARENCY.ordinal + 1 -> getString(R.string.qs_mode_transparency)
+            NoiseControlMode.ADAPTIVE.ordinal + 1 -> getString(R.string.qs_mode_adaptive)
+            NoiseControlMode.NOISE_CANCELLATION.ordinal + 1 -> getString(R.string.qs_mode_anc)
+            else -> getString(R.string.qs_mode_unknown)
         }
     }
 

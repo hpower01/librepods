@@ -138,12 +138,29 @@ class PopupWindow(
                 updateBatteryStatus(batteryNotification)
 
                 val vid = mView.findViewById<VideoView>(R.id.video)
-                vid.setAudioFocusRequest(AudioManager.AUDIOFOCUS_NONE)
-                vid.setVideoPath("android.resource://me.kavishdevar.librepods/" + R.raw.connected)
-                vid.resolveAdjustedSize(vid.width, vid.height)
-                vid.start()
-                vid.setOnCompletionListener {
+                
+                try {
+                    vid.setAudioFocusRequest(AudioManager.AUDIOFOCUS_NONE)
+                    vid.setVideoPath("android.resource://me.kavishdevar.librepods/" + R.raw.connected)
+                    
+                    // Catch video errors (e.g. missing codecs) and prevent the app from crashing
+                    vid.setOnErrorListener { _, _, _ ->
+                        vid.visibility = View.GONE
+                        true // Returns true to indicate we handled the error and prevent default crash/dialog
+                    }
+                    
+                    // Add info listener as extra safety for certain codecs dropping silent warnings
+                    vid.setOnInfoListener { _, _, _ -> true }
+                    
+                    vid.resolveAdjustedSize(vid.width, vid.height)
                     vid.start()
+                    vid.setOnCompletionListener {
+                        try { vid.start() } catch (e: Exception) {}
+                    }
+                } catch (e: Exception) {
+                    // Fallback if setting up the video fails immediately
+                    Log.e("PopupWindow", "Video setup failed, skipping: ${e.message}")
+                    vid.visibility = View.GONE
                 }
 
                 try {
@@ -182,14 +199,24 @@ class PopupWindow(
         batteryUpdateReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
                 if (intent?.action == AirPodsNotifications.BATTERY_DATA) {
-                    val batteryList = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                        intent.getParcelableArrayListExtra("data", Battery::class.java)
-                    } else {
-                        @Suppress("DEPRECATION")
-                        intent.getParcelableArrayListExtra("data")
-                    }
-                    if (batteryList != null) {
-                        updateBatteryStatusFromList(batteryList)
+                    try {
+                        val batteryList = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                            try {
+                                intent.getParcelableArrayListExtra("data", Battery::class.java)
+                            } catch (e: Exception) {
+                                // Fallback for an Android 13+ bug that crashes when parsing the intent
+                                @Suppress("DEPRECATION")
+                                intent.getParcelableArrayListExtra<Battery>("data")
+                            }
+                        } else {
+                            @Suppress("DEPRECATION")
+                            intent.getParcelableArrayListExtra<Battery>("data")
+                        }
+                        if (batteryList != null) {
+                            updateBatteryStatusFromList(batteryList)
+                        }
+                    } catch (e: Exception) {
+                        Log.e("PopupWindow", "Error reading battery intent data: ${e.message}")
                     }
                 }
             }
@@ -259,7 +286,11 @@ class PopupWindow(
             unregisterBatteryUpdateReceiver()
 
             val vid = mView.findViewById<VideoView>(R.id.video)
-            vid.stopPlayback()
+            try {
+                vid.stopPlayback()
+            } catch (e: Exception) {
+                Log.e("PopupWindow", "Error stopping video: ${e.message}")
+            }
 
             ObjectAnimator.ofFloat(mView, "translationY", mView.height.toFloat()).apply {
                 duration = 500
