@@ -22,6 +22,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -43,6 +44,8 @@ fun CopyrightMark(modifier: Modifier = Modifier) {
         text = "©",
         style = CreditTextStyle,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
-        modifier = modifier
+        // חותך את מה שהנטייה דוחפת מחוץ לגבולות, כמו TextView ב-Smart Gallery
+        // A TextView clips the synthetic-italic overhang, cutting the ring's right edge; Compose doesn't by default
+        modifier = modifier.clipToBounds()
     )
 }
