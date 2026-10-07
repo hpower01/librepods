@@ -75,6 +75,8 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.PlatformTextStyle
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -329,7 +331,10 @@ fun HPowerWelcomeDialog(onDismiss: () -> Unit) {
         Surface(
             shape = RoundedCornerShape(28.dp),
             color = background,
-            modifier = Modifier.fillMaxWidth()
+            // MaterialAlertDialog insets its background 24dp from the window's sides
+            modifier = Modifier
+                .padding(horizontal = 24.dp)
+                .fillMaxWidth()
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -444,7 +449,11 @@ private fun ContactRow(
         Text(
             text = text,
             color = linkColor,
-            fontSize = 14.sp,
+            // A plain 14sp TextView: font padding on, no theme line height
+            style = TextStyle(
+                fontSize = 14.sp,
+                platformStyle = PlatformTextStyle(includeFontPadding = true)
+            ),
             textDecoration = TextDecoration.Underline,
             modifier = Modifier
                 .padding(start = 8.dp)
