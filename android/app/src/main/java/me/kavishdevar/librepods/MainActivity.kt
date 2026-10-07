@@ -38,27 +38,27 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Language
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
@@ -67,16 +67,21 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.core.content.edit
+import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.android.play.core.review.ReviewManagerFactory
@@ -296,58 +301,89 @@ private fun triggerReviewFlow(activity: Activity) {
     }
 }
 
+// Same layout as the About dialog in HTransfer (res/layout/dialog_about.xml there)
 @Composable
 fun HPowerWelcomeDialog(onDismiss: () -> Unit) {
+    val context = LocalContext.current
     val uriHandler = LocalUriHandler.current
+    val dark = isSystemInDarkTheme()
+
+    // Plain solid background with no Material 3 tonal tint, and HTransfer's Material 3 baseline colors
+    val background = if (dark) Color(0xFF1A1A26) else Color(0xFFFFFFFF)
+    val bubble = if (dark) Color(0xFF2B2B38) else Color(0xFFF1F1F4)
+    val link = if (dark) Color(0xFFA99BFF) else Color(0xFF5B4CF5)
+    val textPrimary = if (dark) Color(0xFFE6E1E5) else Color(0xFF1C1B1F)
+    val textSecondary = if (dark) Color(0xFFCAC4D0) else Color(0xFF49454F)
+    // Default Material 3 type scale (Roboto), not LibrePods' own typography
+    val typography = remember { Typography() }
+
+    // The launcher icon is an adaptive icon, which painterResource can't load, so draw it to a bitmap
+    val iconSize = with(LocalDensity.current) { 72.dp.roundToPx() }
+    val appIcon = remember(iconSize) {
+        context.packageManager.getApplicationIcon(context.packageName)
+            .toBitmap(iconSize, iconSize)
+            .asImageBitmap()
+    }
 
     Dialog(onDismissRequest = onDismiss) {
         Surface(
-            shape = RoundedCornerShape(24.dp),
-            color = MaterialTheme.colorScheme.surface,
-            tonalElevation = 6.dp,
+            shape = RoundedCornerShape(28.dp),
+            color = background,
             modifier = Modifier.fillMaxWidth()
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
+                    .verticalScroll(rememberScrollState())
                     .padding(24.dp)
                     .fillMaxWidth()
             ) {
-                // שם האפליקציה (מתחילים ישר מכאן ללא תמונה למניעת שגיאות הידור)
+                Image(
+                    bitmap = appIcon,
+                    contentDescription = "App Logo",
+                    modifier = Modifier.size(72.dp)
+                )
+
+                // שם האפליקציה
                 Text(
                     text = stringResource(id = R.string.app_name),
-                    style = MaterialTheme.typography.headlineSmall
+                    style = typography.headlineSmall,
+                    color = textPrimary,
+                    modifier = Modifier.padding(top = 16.dp)
                 )
 
                 // גרסה
                 Text(
                     text = "V${BuildConfig.VERSION_NAME}",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    style = typography.bodyMedium,
+                    color = textSecondary
                 )
 
-                Spacer(modifier = Modifier.height(24.dp))
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 24.dp, bottom = 8.dp)
+                ) {
+                    // טקסט קרדיט "Mod By HPower"
+                    Text(
+                        text = "Mod By HPower",
+                        // Standalone style (not merged with the theme) so both credit lines use the exact same font
+                        style = CreditTextStyle,
+                        color = textSecondary
+                    )
 
-                // טקסט קרדיט "Mod By HPower"
-                Text(
-                    text = "Mod By HPower",
-                    // Standalone style (not merged with the theme) so both credit lines use the exact same font
-                    style = CreditTextStyle,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-
-                // סימן זכויות יוצרים
-                CopyrightMark(modifier = Modifier.padding(top = 4.dp))
-
-                Spacer(modifier = Modifier.height(16.dp))
+                    // סימן זכויות יוצרים
+                    CopyrightMark(modifier = Modifier.padding(top = 4.dp), color = textSecondary)
+                }
 
                 // בועת יצירת קשר
                 Card(
                     shape = RoundedCornerShape(12.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant
-                    ),
-                    modifier = Modifier.fillMaxWidth()
+                    colors = CardDefaults.cardColors(containerColor = bubble),
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .fillMaxWidth()
                 ) {
                     // כופה משמאל לימין כדי שהאייקונים והטקסט באנגלית ייראו טוב גם כשמערכת בעברית
                     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
@@ -357,68 +393,62 @@ fun HPowerWelcomeDialog(onDismiss: () -> Unit) {
                                 .fillMaxWidth()
                         ) {
                             // שורת האתר
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable { uriHandler.openUri("https://hpower01.github.io") }
-                                    .padding(vertical = 4.dp)
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Language,
-                                    contentDescription = "Website",
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    modifier = Modifier.size(20.dp)
-                                )
-                                Spacer(modifier = Modifier.width(8.dp))
-                                Text(
-                                    text = "hpower01.github.io",
-                                    color = MaterialTheme.colorScheme.primary,
-                                    fontSize = 14.sp
-                                )
-                            }
-
-                            Spacer(modifier = Modifier.height(8.dp))
+                            ContactRow(
+                                icon = Icons.Default.Language,
+                                contentDescription = "Website Icon",
+                                text = "hpower01.github.io",
+                                iconTint = textSecondary,
+                                linkColor = link,
+                                onClick = { uriHandler.openUri("https://hpower01.github.io") }
+                            )
 
                             // שורת המייל
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable { uriHandler.openUri("mailto:hpower.cf@gmail.com") }
-                                    .padding(vertical = 4.dp)
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Email,
-                                    contentDescription = "Email",
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    modifier = Modifier.size(20.dp)
-                                )
-                                Spacer(modifier = Modifier.width(8.dp))
-                                Text(
-                                    text = "hpower.cf@gmail.com",
-                                    color = MaterialTheme.colorScheme.primary,
-                                    fontSize = 14.sp
-                                )
-                            }
+                            ContactRow(
+                                icon = Icons.Default.Email,
+                                contentDescription = "Email Icon",
+                                text = "hpower.cf@gmail.com",
+                                iconTint = textSecondary,
+                                linkColor = link,
+                                onClick = { uriHandler.openUri("mailto:hpower.cf@gmail.com") },
+                                modifier = Modifier.padding(top = 12.dp)
+                            )
                         }
                     }
                 }
-
-                Spacer(modifier = Modifier.height(24.dp))
-
-                // כפתור אישור לסגירת החלונית
-                Button(
-                    onClick = onDismiss,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.close_button),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
             }
         }
+    }
+}
+
+// An autoLink TextView: the whole text is an underlined link, and only the text itself is tappable
+@Composable
+private fun ContactRow(
+    icon: ImageVector,
+    contentDescription: String,
+    text: String,
+    iconTint: Color,
+    linkColor: Color,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier.fillMaxWidth()
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = contentDescription,
+            tint = iconTint,
+            modifier = Modifier.size(20.dp)
+        )
+        Text(
+            text = text,
+            color = linkColor,
+            fontSize = 14.sp,
+            textDecoration = TextDecoration.Underline,
+            modifier = Modifier
+                .padding(start = 8.dp)
+                .clickable(onClick = onClick)
+        )
     }
 }
