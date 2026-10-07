@@ -64,6 +64,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -466,6 +467,17 @@ fun AppSettingsScreen(
 
             // סימן זכויות יוצרים
             CopyrightMark(modifier = Modifier.padding(top = 4.dp))
+
+            // המייל, בקטן מתחת לסימן זכויות היוצרים
+            val uriHandler = LocalUriHandler.current
+            Text(
+                text = "hpower.cf@gmail.com",
+                fontSize = 12.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier
+                    .padding(top = 4.dp)
+                    .clickable { uriHandler.openUri("mailto:hpower.cf@gmail.com") }
+            )
         }
         // ----------------------
 
